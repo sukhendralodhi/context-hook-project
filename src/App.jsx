@@ -1,9 +1,11 @@
-import AppContext from "./AppContext";
+import { useGlobalContext } from "./AppContext";
 
 function App() {
+  const {name} = useGlobalContext();
+  console.log(name);
   return (
     <>
-      <AppContext />
+      <h1>Hello Main Component</h1>
     </>
   );
 }

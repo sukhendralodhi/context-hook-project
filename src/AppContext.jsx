@@ -1,12 +1,16 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 
-const AppContext = () => {
-    return (
-        <div>
-            <h1>Context Hook</h1>
-        </div>
-    );
-}
+export const useGlobalContext = () => useContext(GlobalContext);
+
+const AppContext = ({children}) => {
+  const [name, setName] = useState("Peter");
+  return (
+    <GlobalContext.Provider value={{ name, setName }}>
+        {children}
+    </GlobalContext.Provider>
+  );
+};
 export default AppContext;
+
